@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>ScanEats · Panel de Control</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>ScanEats <span>Videovigilancia Analitica</span></h1>
+    <div id="status-badges" class="badges"></div>
+  </header>
+
+  <main class="layout">
+    <section class="panel video-panel">
+      <h2>Monitoreo de Ocupacion en Tiempo Real</h2>
+      <img src="/stream/video" alt="Flujo de video anotado" class="video-feed" />
+      <p class="hint">
+        Verde = libre &nbsp;·&nbsp; Ambar = ocupada &nbsp;·&nbsp; Rojo = alerta de espera
+        (&gt; {{ alert_threshold }}s)
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Mapa de Mesas</h2>
+      <div id="tables-grid" class="tables-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Gestion de Desempeno Operativo</h2>
+      <table class="data-table" id="waiters-table">
+        <thead>
+          <tr><th>Mesero (ID de track)</th><th>Interacciones</th><th>Mesas atendidas</th><th>Estado</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Mapa de Uso del Restaurante</h2>
+      <div id="heatmap" class="heatmap"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Alertas de Atencion al Cliente</h2>
+      <ul id="alerts-list" class="alerts-list"></ul>
+    </section>
+  </main>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>

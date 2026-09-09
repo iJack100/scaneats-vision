@@ -1,0 +1,20 @@
+{
+  "_comment": "Zonas de ejemplo, ubicadas a ojo sobre video.mp4 (frame 0) solo para que el MVP corra de inmediato. Risaldi et al. (2026, Sec. 2.6) exigen camara estatica y poligonos re-anotados manualmente ante cualquier cambio de disposicion/angulo: recalibra con 'python tools/calibrate_tables.py' antes de usar otra fuente de video.",
+  "tables": [
+    {
+      "id": "mesa_1",
+      "name": "Mesa 1",
+      "polygon": [[520, 520], [850, 520], [850, 850], [520, 850]]
+    },
+    {
+      "id": "mesa_2",
+      "name": "Mesa 2",
+      "polygon": [[900, 600], [1550, 600], [1550, 1080], [900, 1080]]
+    },
+    {
+      "id": "mesa_3",
+      "name": "Mesa 3",
+      "polygon": [[820, 400], [1280, 400], [1280, 650], [820, 650]]
+    }
+  ]
+}
