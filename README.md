@@ -29,12 +29,37 @@ apenas arranca el servidor.
 ### Recalibrar las mesas (recomendado)
 
 `config/tables.json` trae 3 zonas ubicadas *a ojo* solo para que el MVP
-corra de inmediato. Para una demo real, recalibra haciendo clic sobre un
-fotograma del video:
+corra de inmediato. Hay dos formas de recalibrar para una camara real:
+
+**Manual (clic sobre un fotograma):**
 
 ```bash
 .\venv\Scripts\python.exe tools\calibrate_tables.py video.mp4 0
 ```
+
+**Automatica (sin clics, usando la clase nativa "dining table" de COCO):**
+
+```bash
+.\venv\Scripts\python.exe tools\auto_calibrate_tables.py video.mp4 --seconds 40 --conf 0.15
+```
+
+Observa la fuente de video un rato, agrupa las detecciones de "dining
+table" en zonas estables y escribe `config/tables.auto.json` +
+`config/tables.auto.preview.jpg` para que revises el resultado antes de
+aplicarlo (`--apply` lo escribe directo en `config/tables.json`, con
+backup del archivo anterior). Es genuinamente automatico, pero la clase
+"dining table" es mas ruidosa que "person" -mesas tapadas por
+manteles/platos/comensales bajan mucho la confianza-, asi que:
+
+- Puede que necesites bajar `--conf` (default 0.15) o alargar
+  `--seconds` si no detecta ninguna mesa.
+- Es normal que en escenas muy concurridas/con obstrucciones en primer
+  plano se pierdan algunas mesas reales (el filtro es conservador a
+  proposito: prefiere omitir una mesa real a inventar una falsa). Usa
+  `calibrate_tables.py` para completar a mano las que falten.
+- Con una camara CCTV fija bien ubicada (el escenario que asumen Risaldi
+  et al. y Mamedov et al.) deberia funcionar mejor que con este video de
+  stock, grabado a mano y con mucha obstruccion en primer plano.
 
 ### Ajustar umbrales sin tocar codigo
 
