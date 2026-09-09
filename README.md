@@ -1,4 +1,4 @@
-# ScanEats — MVP
+# ScanEats Vision — Microservicio
 
 Sistema de videovigilancia analitica para gestion operativa de restaurantes,
 implementado segun el alcance inicial del informe de propuesta
@@ -6,7 +6,16 @@ implementado segun el alcance inicial del informe de propuesta
 procesa video con **YOLOv8 + OpenCV** para medir tiempos de espera, contar
 interacciones del personal de salon y mapear el uso de las mesas.
 
-## Como ejecutarlo
+Este repo es **solo** el microservicio de vision (Modulos 6.1 y 6.2 del
+informe). La app principal (autenticacion, catalogo de mesas/meseros,
+reportes consolidados — Modulo 6.3) vive en un repo aparte: **`scaneats`**
+(Django + DRF), que consume la API de este microservicio por HTTP. Ver el
+README de ese repo para levantar ambos juntos. El middleware CORS
+(`app/main.py`) ya permite el origen `http://127.0.0.1:8001` (Django) por
+defecto; ajustalo con `SCANEATS_CORS_ORIGINS` si Django corre en otro
+puerto/host.
+
+## Como ejecutarlo (standalone, con su propio dashboard)
 
 ```bash
 # Windows (PowerShell), desde la raiz del proyecto

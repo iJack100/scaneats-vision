@@ -80,3 +80,11 @@ WAIT_ALERT_THRESHOLD_SECONDS = int(os.environ.get("SCANEATS_ALERT_THRESHOLD", "6
 TRACK_MAX_AGE = int(os.environ.get("SCANEATS_TRACK_MAX_AGE", "30"))
 TRACK_MIN_HITS = int(os.environ.get("SCANEATS_TRACK_MIN_HITS", "3"))
 TRACK_IOU_THRESHOLD = float(os.environ.get("SCANEATS_TRACK_IOU", "0.3"))
+
+# --- CORS ---
+# El proyecto Django (app principal, repo aparte) sirve su dashboard en
+# otro origen/puerto y hace fetch() en el navegador directamente contra
+# esta API; sin CORS el navegador bloquearia esas llamadas.
+CORS_ALLOWED_ORIGINS = os.environ.get(
+    "SCANEATS_CORS_ORIGINS", "http://127.0.0.1:8001,http://localhost:8001"
+).split(",")
