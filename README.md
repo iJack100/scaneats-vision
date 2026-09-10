@@ -1,4 +1,4 @@
-# ScanEats Vision — Microservicio
+# ScanEats Vision — Microservicio ajaja
 
 Sistema de videovigilancia analitica para gestion operativa de restaurantes,
 implementado segun el alcance inicial del informe de propuesta
